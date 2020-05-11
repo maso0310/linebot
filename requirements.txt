@@ -1,4 +1,4 @@
 line-bot-sdk
 flask
 numpy
-opencv
+opencv-python
