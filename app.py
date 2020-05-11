@@ -18,9 +18,9 @@ from Function import *
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi('Hm/Yzh8UEPKS9i2vKrlWj6dakJf4Y614YYM6fVqbfnV10jCLLoM+uwMM22viqbNvJvYsou/fGMNDo8dXct23YS1cG7e7Qb2mDWPTjNICCqFHhBdOFhVYF39FNX1EaY0SXqImqJ1XYWsD2+8bShOaGQdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('ZbWIGQOfoxOLqko0Fhh/OTjBMeeXrd+Py4xyAaNeFsa0bVP3vY05ZyOZEVj8cS9Zu+PDXGMfIUDzAGhFEjHVMN8J9ocEZsuGotbuRhzeQTML221ynVdVwXntBcIP4Ft+Sy0omAoemN84m8OxTJbFWQdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
-handler = WebhookHandler('f9219d0bf6d9489bc0e31b7bb4f5db0a')
+handler = WebhookHandler('eeed6c17319b3f197e255e08bc2e98c3')
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -63,7 +63,11 @@ def handle_message(event):
         message = TextSendMessage(text=msg)
         line_bot_api.reply_message(event.reply_token, message)
 
-
+@handler.add(MessageEvent, message=(ImageMessage))
+def handle_message(event):
+    #如果LINE用戶端傳送過來的是圖片
+    if isinstance(event.message, ImageMessage):
+        print('圖片訊息')
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
