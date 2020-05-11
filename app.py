@@ -16,7 +16,7 @@ from Function import *
 #======這裡是呼叫的檔案內容=====
 
 #======python的函數庫==========
-from cv2 import cv2 as cv
+from cv2 import cv2
 import numpy as np
 #======python的函數庫==========
 
@@ -81,16 +81,16 @@ def handle_message(event):
         image_content = line_bot_api.get_message_content(event.message.id)
         with open('temp_img.jpg','rb') as f:
             img_binary = f.read()
-            o = cv.imdecode(np.frombuffer(img_binary,np.uint8),cv.IMREAD_COLOR)#二進位資料轉成數組array，讓圖片可以用cv讀取得到並且進行處理
-            gray = cv.cvtColor(o,cv.COLOR_BGR2GRAY)
-            ret,binary=cv.threshold(gray,150,255,cv.THRESH_BINARY)
-            contours,hierarchy=cv.findContours(binary,cv.RETR_LIST,cv.CHAIN_APPROX_NONE)
+            o = cv2.imdecode(np.frombuffer(img_binary,np.uint8),cv2.IMREAD_COLOR)#二進位資料轉成數組array，讓圖片可以用cv讀取得到並且進行處理
+            gray = cv2.cvtColor(o,cv2.COLOR_BGR2GRAY)
+            ret,binary=cv2.threshold(gray,150,255,cv.THRESH_BINARY)
+            contours,hierarchy=cv2.findContours(binary,cv2.RETR_LIST,cv2.CHAIN_APPROX_NONE)
             #=========劃出凸矩形並且標註其輪廓編號
             n = len(contours)
-            font=cv.FONT_HERSHEY_SIMPLEX
+            font=cv2.FONT_HERSHEY_SIMPLEX
             for i in range(n):
-                hull = cv.convexHull(contours[i])
-                M = cv.moments(hull)
+                hull = cv2.convexHull(contours[i])
+                M = cv2.moments(hull)
                 #print(i,M['m00'])
                 if M['m00'] > 80 and M['m00']<450:
                     cx = int(M['m10']/M['m00'])
@@ -101,23 +101,23 @@ def handle_message(event):
                             print(cx,cy)
                             position_0_x.append(cx)
                             position_0_y.append(cy)
-                            cv.putText(o,'o',(cx,cy),font,1,(0,0,255),3)#p=每個像素幾公分     
+                            cv2.putText(o,'o',(cx,cy),font,1,(0,0,255),3)#p=每個像素幾公分     
                     if cx<800 and cx>600:
                         if cy>1850 and cy<2300:
                             print(cx,cy)
                             position_5_x.append(cx)
                             position_5_y.append(cy)
-                            cv.putText(o,'o',(cx,cy),font,1,(0,0,255),3)#p=每個像素幾公分
+                            cv2.putText(o,'o',(cx,cy),font,1,(0,0,255),3)#p=每個像素幾公分
                     print(position_0_x,position_0_y)
                     print(position_5_x,position_5_y)
-    #                cv.putText(o,'o',(cx,cy),font,1,(0,0,255),3)#p=每個像素幾公分
+    #                cv2.putText(o,'o',(cx,cy),font,1,(0,0,255),3)#p=每個像素幾公分
 
                 if M['m00'] > 100000 and M['m00']<500000:
                     print('面積',M['m00'])
                     cx = int(M['m10']/M['m00'])
                     cy = int(M['m01']/M['m00'])
                     #print('cx,cy',cx,cy)
-                    cv.polylines(o,[hull],True,(0,255,0),3)
+                    cv2.polylines(o,[hull],True,(0,255,0),3)
                     #cv.drawContours(o, [box], 0, (255, 0, 0), 1)
                     #print('hull['+str(i)+']面積=',int(cv.contourArea(hull)))
                     #print('hull['+str(i)+']長度=',int(cv.arcLength(hull,True)))
@@ -144,6 +144,7 @@ def handle_message(event):
             p=5/(position_5_x[0]-position_0_x[0])
             #print(p)
             cm=round((max(y)-min(y))*p,2)
+            print("穗長%scm"%(cm))
 
 import os
 if __name__ == "__main__":
