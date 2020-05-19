@@ -82,7 +82,7 @@ def handle_message(event):
         position_5_x = []
         position_5_y = []
         image_content = line_bot_api.get_message_content(event.message.id)
-        path='./static/'+str(datetime.datetime.now())+'.jpg'
+        path='./static/tmp.jpg'
         with open(path, 'wb') as fd:
             for chunk in message_content.iter_content():
                 fd.write(chunk)
