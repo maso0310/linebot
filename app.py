@@ -75,7 +75,7 @@ def handle_message(event):
 def handle_message(event):
     #如果LINE用戶端傳送過來的是圖片
     if isinstance(event.message, ImageMessage):
-        print('收到圖片訊息')
+        #print('收到圖片訊息')
         hull_list = []
         position_0_x = []
         position_0_y = []
@@ -103,7 +103,7 @@ def handle_message(event):
             if M['m00'] > 80 and M['m00']<450:
                 cx = int(M['m10']/M['m00'])
                 cy = int(M['m01']/M['m00'])
-                print('cx的座標',cx,'cy的座標',cy)
+                #print('cx的座標',cx,'cy的座標',cy)
                 if cx<300 and cx>100:
                     if cy>1850 and cy<2300:
                         print(cx,cy)
@@ -116,12 +116,12 @@ def handle_message(event):
                         position_5_x.append(cx)
                         position_5_y.append(cy)
                         cv2.putText(o,'o',(cx,cy),font,1,(0,0,255),3)#p=每個像素幾公分
-                print(position_0_x,position_0_y)
-                print(position_5_x,position_5_y)
+                #print(position_0_x,position_0_y)
+                #print(position_5_x,position_5_y)
 #                cv2.putText(o,'o',(cx,cy),font,1,(0,0,255),3)#p=每個像素幾公分
 
             if M['m00'] > 100000 and M['m00']<500000:
-                print('面積',M['m00'])
+                #print('面積',M['m00'])
                 cx = int(M['m10']/M['m00'])
                 cy = int(M['m01']/M['m00'])
                 #print('cx,cy',cx,cy)
@@ -148,11 +148,11 @@ def handle_message(event):
             y.append(point[1])
         #print('min(y)',min(y))
         #print('max(y)',max(y))
-        print(max(y)-min(y))
+        #print(max(y)-min(y))
         p=5/(position_5_x[0]-position_0_x[0])
         #print(p)
         cm=round((max(y)-min(y))*p,2)
-        print("穗長%scm"%(cm))
+        #print("穗長%scm"%(cm))
         message = TextSendMessage(text="穗長%scm"%(cm))
         line_bot_api.reply_message(event.reply_token, message)
 
