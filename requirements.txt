@@ -1,8 +1,4 @@
 line-bot-sdk
 flask
 numpy
-libsm6
-libxrender1
-libfontconfig1
-libice6
 opencv-python-headless
