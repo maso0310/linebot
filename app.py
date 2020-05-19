@@ -80,8 +80,10 @@ def handle_message(event):
         position_5_x = []
         position_5_y = []
         image_content = line_bot_api.get_message_content(event.message.id)
-        with open('temp_img.jpg','rb') as f:
-            img_binary = f.read()
+
+        with tempfile.NamedTemporaryFile(dir=static_tmp_path, prefix=ext + '-', delete=False) as tf:
+        #將臨時目錄寫入路徑tempfile_path
+            img_binary = tf.read()
             o = cv2.imdecode(np.frombuffer(img_binary,np.uint8),cv2.IMREAD_COLOR)#二進位資料轉成數組array，讓圖片可以用cv讀取得到並且進行處理
             gray = cv2.cvtColor(o,cv2.COLOR_BGR2GRAY)
             ret,binary=cv2.threshold(gray,150,255,cv.THRESH_BINARY)
