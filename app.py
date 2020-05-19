@@ -20,6 +20,7 @@ from cv2 import cv2
 import numpy as np
 import tempfile, os
 import datetime
+import time
 #======python的函數庫==========
 
 app = Flask(__name__)
@@ -74,6 +75,7 @@ def handle_message(event):
 @handler.add(MessageEvent, message=(ImageMessage))
 def handle_message(event):
     #如果LINE用戶端傳送過來的是圖片
+    start_time=time.time()
     if isinstance(event.message, ImageMessage):
         #print('收到圖片訊息')
         hull_list = []
@@ -155,6 +157,8 @@ def handle_message(event):
         #print("穗長%scm"%(cm))
         message = TextSendMessage(text="穗長%scm"%(cm))
         line_bot_api.reply_message(event.reply_token, message)
+        end_time=time.time()
+        print('處理時間%d秒'%(end_time-start_time))
 
 
 import os
