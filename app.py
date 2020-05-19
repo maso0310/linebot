@@ -153,6 +153,9 @@ def handle_message(event):
         #print(p)
         cm=round((max(y)-min(y))*p,2)
         print("穗長%scm"%(cm))
+        message = TextSendMessage(text="穗長%scm"%(cm))
+        line_bot_api.reply_message(event.reply_token, message)
+
 
 import os
 if __name__ == "__main__":
