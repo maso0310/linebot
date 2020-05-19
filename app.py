@@ -18,6 +18,7 @@ from Function import *
 #======python的函數庫==========
 from cv2 import cv2
 import numpy as np
+import tempfile, os
 #======python的函數庫==========
 
 app = Flask(__name__)
