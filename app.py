@@ -84,7 +84,7 @@ def handle_message(event):
         image_content = line_bot_api.get_message_content(event.message.id)
         path='./static/tmp.jpg'
         with open(path, 'wb') as fd:
-            for chunk in message_content.iter_content():
+            for chunk in image_content.iter_content():
                 fd.write(chunk)
                 
         #img_binary = tf.read()#讀取二進位的圖片
