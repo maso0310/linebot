@@ -91,7 +91,7 @@ def handle_message(event):
         #o = cv2.imdecode(np.frombuffer(img_binary,np.uint8),cv2.IMREAD_COLOR)#二進位資料轉成數組array，讓圖片可以用cv讀取得到並且進行處理
         o=cv2.imread(path)
         gray = cv2.cvtColor(o,cv2.COLOR_BGR2GRAY)
-        ret,binary=cv2.threshold(gray,150,255,cv.THRESH_BINARY)
+        ret,binary=cv2.threshold(gray,150,255,cv2.THRESH_BINARY)
         contours,hierarchy=cv2.findContours(binary,cv2.RETR_LIST,cv2.CHAIN_APPROX_NONE)
         #=========劃出凸矩形並且標註其輪廓編號
         n = len(contours)
