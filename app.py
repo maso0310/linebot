@@ -155,10 +155,9 @@ def handle_message(event):
         #print(p)
         cm=round((max(y)-min(y))*p,2)
         #print("穗長%scm"%(cm))
-        message = TextSendMessage(text="穗長%scm"%(cm))
-        line_bot_api.reply_message(event.reply_token, message)
         end_time=time.time()
-        print('處理時間%d秒'%(end_time-start_time))
+        message = TextSendMessage(text="穗長%scm，處理時間%d秒"%(cm,end_time-start_time))
+        line_bot_api.reply_message(event.reply_token, message)
 
 
 import os
