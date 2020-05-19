@@ -73,6 +73,7 @@ def handle_message(event):
 @handler.add(MessageEvent, message=(ImageMessage))
 def handle_message(event):
     #如果LINE用戶端傳送過來的是圖片
+    ext = 'jpg'
     if isinstance(event.message, ImageMessage):
         print('收到圖片訊息')
         hull_list = []
