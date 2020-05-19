@@ -16,8 +16,8 @@ from Function import *
 #======這裡是呼叫的檔案內容=====
 
 #======python的函數庫==========
-#from cv2 import cv2
-#import numpy as np
+from cv2 import cv2
+import numpy as np
 #======python的函數庫==========
 
 app = Flask(__name__)
@@ -67,7 +67,7 @@ def handle_message(event):
     else:
         message = TextSendMessage(text=msg)
         line_bot_api.reply_message(event.reply_token, message)
-'''
+
 @handler.add(MessageEvent, message=(ImageMessage))
 def handle_message(event):
     #如果LINE用戶端傳送過來的是圖片
@@ -145,7 +145,7 @@ def handle_message(event):
             #print(p)
             cm=round((max(y)-min(y))*p,2)
             print("穗長%scm"%(cm))
-'''
+
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
