@@ -178,12 +178,12 @@ def handle_message(event):
         sound.export(path, format="wav")
         with sr.AudioFile(path) as source:
             audio = r.record(source)
+            text = r.recognize_google(audio,language='zh-TW')
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text='你的訊息是=\n'+text))
     except Exception as e:
         t = '音訊有問題'+str(e.args)+path
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=t))
     os.remove(path)
-    text = r.recognize_google(audio,language='zh-TW')
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text='你的訊息是=\n'+text))
 
 import os
 if __name__ == "__main__":
