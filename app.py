@@ -15,7 +15,6 @@ from new import *
 from Function import *
 #======這裡是呼叫的檔案內容=====
 
-<<<<<<< HEAD
 #======python的函數庫==========
 from cv2 import cv2
 import numpy as np
@@ -26,8 +25,6 @@ from pydub import AudioSegment
 import speech_recognition as sr
 #======python的函數庫==========
 
-=======
->>>>>>> 337097487475d862c9fa91d3b22d8815c464471c
 app = Flask(__name__)
 static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
 # Channel Access Token
