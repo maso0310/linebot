@@ -161,8 +161,8 @@ def handle_message(event):
         message = TextSendMessage(text="穗長%scm，處理時間%f秒"%(cm,round(end_time-start_time,3)))
         line_bot_api.reply_message(event.reply_token, message)
 
-@handler.add(MessageEvent,message=AudioMessage)
-def handle_aud(event):
+@handler.add(MessageEvent,message=(AudioMessage))
+def handle_message(event):
     r = sr.Recognizer()
     message_content = line_bot_api.get_message_content(event.message.id)
     ext = 'mp3'
@@ -179,7 +179,7 @@ def handle_aud(event):
         with sr.AudioFile(path) as source:
             audio = r.record(source)
     except Exception as e:
-        t = '音訊有問題'+test+str(e.args)+path
+        t = '音訊有問題'+str(e.args)+path
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=t))
     os.remove(path)
     text = r.recognize_google(audio,language='zh-TW')
