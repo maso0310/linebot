@@ -77,7 +77,6 @@ def handle_message(event):
         message = TextSendMessage(text=msg)
         line_bot_api.reply_message(event.reply_token, message)
 
-<<<<<<< HEAD
 @handler.add(MessageEvent, message=(ImageMessage))
 def handle_message(event):
     #如果LINE用戶端傳送過來的是圖片
@@ -189,8 +188,6 @@ def handle_message(event):
         t = '音訊有問題'+str(e.args)+path
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=t))
     os.remove(path)
-=======
->>>>>>> 337097487475d862c9fa91d3b22d8815c464471c
 
 import os
 if __name__ == "__main__":
