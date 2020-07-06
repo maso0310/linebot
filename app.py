@@ -59,7 +59,7 @@ def handle_message(event):
     elif 'html' in msg:
         file_list = os.listdir('./')
         print(file_list)
-        file = 'webduino_light_open.html'
+        file = 'test.html'
         webbrowser.open(file)
         print(webbrowser.open(file))
         message = TextSendMessage(text=str(webbrowser.open(file)))
