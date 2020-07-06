@@ -62,7 +62,6 @@ def handle_message(event):
         file = 'test.html'
         webbrowser.open(file)
         print(webbrowser.open(file))
-        
         message = TextSendMessage(text=str(webbrowser.open(file)))
         line_bot_api.reply_message(event.reply_token, message)
     elif '最新活動訊息' in msg:
