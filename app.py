@@ -21,6 +21,7 @@ import numpy as np
 import tempfile, os
 import datetime
 import time
+import webbrowser
 from pydub import AudioSegment
 import speech_recognition as sr
 #======python的函數庫==========
@@ -54,6 +55,14 @@ def handle_message(event):
     msg = event.message.text
     if '最新合作廠商' in msg:
         message = imagemap_message()
+        line_bot_api.reply_message(event.reply_token, message)
+    elif 'html' in msg:
+        file_list = os.listdir('./')
+        print(file_list)
+        file = 'webduino_light_open.html'
+        webbrowser.open(file)
+        print(webbrowser.open(file))
+        message = TextSendMessage(text=str(webbrowser.open(file)))
         line_bot_api.reply_message(event.reply_token, message)
     elif '最新活動訊息' in msg:
         message = buttons_message()

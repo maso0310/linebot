@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="./js/jquery-1.9.1.min.js"></script>
+	<script src="./js/webduino-all.min.js"></script>
+	<script src="./js/webduino-blockly.js"></script>
+	<!-- <script src="./js/firebase.js"></script> -->
+	<!-- <script src="./js/runtime.min.js"></script> -->
+	<script>
+		boardReady({board: 'Smart', device: '8xV3W', transport: 'mqtt'}, function (board) {
+			board.samplingInterval = 50
+			led = getLed(board, 5)
+			led.on()
+		})
+	</script>
+</head>
+</html>
