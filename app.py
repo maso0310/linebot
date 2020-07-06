@@ -60,7 +60,7 @@ def handle_message(event):
         file_list = os.listdir('./')
         print(file_list)
         file = 'test.html'
-        webbrowser.open(file)
+        webbrowser.UnixBrowser(file)
         print(webbrowser.open(file))
         message = TextSendMessage(text=str(webbrowser.open(file)))
         line_bot_api.reply_message(event.reply_token, message)
