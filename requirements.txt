@@ -1,6 +1,2 @@
 line-bot-sdk
 flask
-numpy
-opencv-python-headless
-pydub
-SpeechRecognition
