@@ -53,7 +53,7 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     
-    if "粉絲團" or "FB" or "活動" in msg:
+    if "粉絲團" or "FB" or "活動" or "官網" in msg:
         message = imagemap_message()
         line_bot_api.reply_message(event.reply_token, message)
 
