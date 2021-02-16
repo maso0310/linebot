@@ -52,21 +52,21 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    try:
-        if "粉絲團" in msg:
-            message = imagemap_message()
-            line_bot_api.reply_message(event.reply_token, message)
-        elif "官網" in msg:
-            message = imagemap_message()
-            line_bot_api.reply_message(event.reply_token, message)
-        elif "活動" in msg:
-            message = imagemap_message()
-            line_bot_api.reply_message(event.reply_token, message)
-        elif "FB" in msg:
-            message = imagemap_message()
-            line_bot_api.reply_message(event.reply_token, message)
+    
+    if "粉絲團" in msg:
+        message = imagemap_message()
+        line_bot_api.reply_message(event.reply_token, message)
+    elif "官網" in msg:
+        message = imagemap_message()
+        line_bot_api.reply_message(event.reply_token, message)
+    elif "活動" in msg:
+        message = imagemap_message()
+        line_bot_api.reply_message(event.reply_token, message)
+    elif "FB" in msg:
+        message = imagemap_message()
+        line_bot_api.reply_message(event.reply_token, message)
         
-    except:
+    else:
         #如果非以上的選項，就會學你說話
         message = TextSendMessage(text=msg)
         line_bot_api.reply_message(event.reply_token, message)
