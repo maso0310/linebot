@@ -24,9 +24,9 @@ import time
 app = Flask(__name__)
 static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
 # Channel Access Token
-line_bot_api = LineBotApi('你的Channel AcessToken')
+line_bot_api = LineBotApi('DCUEc9SDugIbOYlQWr2HY42R3BKwGcZ+dw5hYib7a5r+S575y0zIlaUGSK/JoK9WlL3EQkStZyQjr5dlfKGSO5yGTFYPugAoSucyFCzDU9mzir/KRJM/Pi4wtI4nVTz8LayMUuYYhJVfdgqQsL5vGwdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
-handler = WebhookHandler('你的Channel Secret')
+handler = WebhookHandler('0016baeaccb90d872f70ed7bc777b102')
 
 
 # 監聽所有來自 /callback 的 Post Request
