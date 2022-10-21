@@ -7,44 +7,38 @@ from linebot.models import *
 def imagemap_message():
     message = ImagemapSendMessage(
         base_url="https://i.imgur.com/BfTFVDN.jpg",
-        alt_text='最新的合作廠商有誰呢？',
-        base_size=BaseSize(height=2000, width=2000),
+        alt_text='補充資源',
+	 base_size=BaseSize(height=2000, width=2000),
         actions=[
             URIImagemapAction(
-                #家樂福
-                link_uri="https://tw.shop.com/search/%E5%AE%B6%E6%A8%82%E7%A6%8F",
+                #均一國語文
+                link_uri="https://www.junyiacademy.org/junyi-chinese/ele-c",
                 area=ImagemapArea(
                     x=0, y=0, width=1000, height=1000
                 )
             ),
             URIImagemapAction(
-                #生活市集
-                link_uri="https://tw.shop.com/search/%E7%94%9F%E6%B4%BB%E5%B8%82%E9%9B%86",
+                #均一數學四年級
+                link_uri="https://www.junyiacademy.org/course-compare/math-elem/math-4",
                 area=ImagemapArea(
                     x=1000, y=0, width=1000, height=1000
                 )
             ),
             URIImagemapAction(
-                #阿瘦皮鞋
-                link_uri="https://tw.shop.com/search/%E9%98%BF%E7%98%A6%E7%9A%AE%E9%9E%8B",
+                #學習吧
+                link_uri="https://www.learnmode.net/search?q=",
                 area=ImagemapArea(
                     x=0, y=1000, width=1000, height=1000
                 )
             ),
             URIImagemapAction(
-                #塔吉特千層蛋糕
-                link_uri="https://tw.shop.com/search/%E5%A1%94%E5%90%89%E7%89%B9",
+                #老師的小天地
+                link_uri="https://www.canva.com/design/DAFLVsU6-x0/vpHgptJink4nvSz8lro1ag/view?website#2",
                 area=ImagemapArea(
-                    x=1000, y=1000, width=1000, height=500
+                    x=1000, y=1000, width=1000, height=1000
                 )
             ),
-            URIImagemapAction(
-                #亞尼克生乳捲
-                link_uri="https://tw.shop.com/search/%E4%BA%9E%E5%B0%BC%E5%85%8B",
-                area=ImagemapArea(
-                    x=1000, y=1500, width=1000, height=500
-                )
-            )
+
         ]
     )
     return message
@@ -83,18 +77,18 @@ def buttons_message():
 def Confirm_Template():
 
     message = TemplateSendMessage(
-        alt_text='是否註冊成為會員？',
+        alt_text='使用教學',
         template=ConfirmTemplate(
-            text="是否註冊成為會員？",
+            text="使用教學",
             actions=[
                 PostbackTemplateAction(
-                    label="馬上註冊",
+                    label="影片教學",
                     text="現在、立刻、馬上",
-                    data="會員註冊"
+                    data="影片"
                 ),
                 MessageTemplateAction(
-                    label="查詢其他功能",
-                    text="查詢其他功能"
+                    label="文字說明",
+                    text="文字說明文字說明"
                 )
             ]
         )
@@ -105,66 +99,48 @@ def Confirm_Template():
 
 def Carousel_Template():
     message = TemplateSendMessage(
-        alt_text='一則旋轉木馬按鈕訊息',
+        alt_text='任務清單',
         template=CarouselTemplate(
             columns=[
                 CarouselColumn(
-                    thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Number_1_in_green_rounded_square.svg/200px-Number_1_in_green_rounded_square.svg.png',
-                    title='這是第一塊模板',
-                    text='一個模板可以有三個按鈕',
+                    thumbnail_image_url='https://i.imgur.com/leN9M2e.jpg',
+                    title='單元2:乘法',
+                    text='請選擇較進行的活動',
                     actions=[
                         PostbackTemplateAction(
-                            label='回傳一個訊息',
+                            label='課前預習',
                             data='將這個訊息偷偷回傳給機器人'
                         ),
                         MessageTemplateAction(
-                            label='用戶發送訊息',
+                            label='課中練習',
                             text='我知道這是1'
                         ),
                         URITemplateAction(
-                            label='進入1的網頁',
+                            label='課後複習',
                             uri='https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Number_1_in_green_rounded_square.svg/200px-Number_1_in_green_rounded_square.svg.png'
                         )
                     ]
                 ),
                 CarouselColumn(
-                    thumbnail_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuo7n2_HNSFuT3T7Z9PUZmn1SDM6G6-iXfRC3FxdGTj7X1Wr0RzA',
-                    title='這是第二塊模板',
-                    text='副標題可以自己改',
+                    thumbnail_image_url='https://i.imgur.com/jFNsxBY.jpg',
+                    title='任務清單',
+                    text='選擇目標任務',
                     actions=[
                         PostbackTemplateAction(
-                            label='回傳一個訊息',
+                            label='注意事項',
                             data='這是ID=2'
                         ),
                         MessageTemplateAction(
-                            label='用戶發送訊息',
-                            text='我知道這是2'
+                            label='開始！！！',
+                            text='你決定要開始～'
                         ),
                         URITemplateAction(
-                            label='進入2的網頁',
+                            label='使用回饋',
                             uri='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Number_2_in_light_blue_rounded_square.svg/200px-Number_2_in_light_blue_rounded_square.svg.png'
                         )
                     ]
                 ),
-                CarouselColumn(
-                    thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Number_3_in_yellow_rounded_square.svg/200px-Number_3_in_yellow_rounded_square.svg.png',
-                    title='這是第三個模塊',
-                    text='最多可以放十個',
-                    actions=[
-                        PostbackTemplateAction(
-                            label='回傳一個訊息',
-                            data='這是ID=3'
-                        ),
-                        MessageTemplateAction(
-                            label='用戶發送訊息',
-                            text='我知道這是3'
-                        ),
-                        URITemplateAction(
-                            label='uri2',
-                            uri='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Number_3_in_yellow_rounded_square.svg/200px-Number_3_in_yellow_rounded_square.svg.png'
-                        )
-                    ]
-                )
+                
             ]
         )
     )
@@ -173,37 +149,30 @@ def Carousel_Template():
 #TemplateSendMessage - ImageCarouselTemplate(圖片旋轉木馬)
 def image_carousel_message1():
     message = TemplateSendMessage(
-        alt_text='圖片旋轉木馬',
+        alt_text='解題小幫手',
         template=ImageCarouselTemplate(
             columns=[
                 ImageCarouselColumn(
-                    image_url="https://i.imgur.com/uKYgfVs.jpg",
+                    image_url="https://i.imgur.com/5rnnEKZ.jpg",
                     action=URITemplateAction(
-                        label="新鮮水果",
-                        uri="http://img.juimg.com/tuku/yulantu/110709/222-110F91G31375.jpg"
+                        label="進位紀錄",
+                        uri="https://i.imgur.com/5rnnEKZ.jpg"
                     )
                 ),
                 ImageCarouselColumn(
-                    image_url="https://i.imgur.com/QOcAvjt.jpg",
+                    image_url="https://i.imgur.com/9JTIUbi.jpg",
                     action=URITemplateAction(
-                        label="新鮮蔬菜",
-                        uri="https://cdn.101mediaimage.com/img/file/1410464751urhp5.jpg"
+                        label="進位加法",
+                        uri="https://i.imgur.com/9JTIUbi.jpg"
                     )
                 ),
                 ImageCarouselColumn(
-                    image_url="https://i.imgur.com/Np7eFyj.jpg",
+                    image_url="https://i.imgur.com/qlGNUB4.jpg",
                     action=URITemplateAction(
-                        label="可愛狗狗",
-                        uri="http://imgm.cnmo-img.com.cn/appimg/screenpic/big/674/673928.JPG"
+                        label="整數倍規律",
+                        uri="https://i.imgur.com/qlGNUB4.jpg"
                     )
                 ),
-                ImageCarouselColumn(
-                    image_url="https://i.imgur.com/QRIa5Dz.jpg",
-                    action=URITemplateAction(
-                        label="可愛貓咪",
-                        uri="https://m-miya.net/wp-content/uploads/2014/07/0-065-1.min_.jpg"
-                    )
-                )
             ]
         )
     )
